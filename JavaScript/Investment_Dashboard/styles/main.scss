@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+
+// Cores principais
+$bg-primary: #0e0e11;
+$bg-secondary: #ffffff;
+$text-primary: #ffffff;
+$text-secondary: #0a3042;
+$text-tercerny: #6b6b6b;
+$border-color: #dadada;
+
+// Cores de destaque
+$color-positive: #10b981;
+$color-negative: #ef4444;
+$color-accent: #3b82f6;
+
+// Sombras
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+  list-style: none;
+  text-decoration: none;
+}
+
+body{
+  background-color: $bg-primary;
+  color: $text-primary;
+  line-height: 1.6;
+}
+
