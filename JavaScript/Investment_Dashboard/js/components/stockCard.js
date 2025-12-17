@@ -1,4 +1,4 @@
-import { formatCurrency, formatPercent } from '../utils/formatters.js';
+import { formatCurrency, formatPercentage } from '../utils/formatters.js';
 
 export const stockCard = (stock, container) => {
   const card = document.createElement('div');

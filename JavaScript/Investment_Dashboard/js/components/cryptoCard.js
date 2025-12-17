@@ -1,4 +1,4 @@
-import { formatCurrency, formatPercent } from '../utils/formatters.js';
+import { formatCurrency, formatPercentage } from '../utils/formatters.js';
 
 export const cryptoCard = (crypto, container) => {
   const card = document.createElement('div');
@@ -25,7 +25,7 @@ export const cryptoCard = (crypto, container) => {
       
       <div class="crypto-change ${changeClass}">
         <span class="change-icon">${changeSymbol}</span>
-        <span>${formatPercent(Math.abs(change24h))}</span>
+        <span>${formatPercentage(Math.abs(change24h))}</span>
       </div>
     </div>
     

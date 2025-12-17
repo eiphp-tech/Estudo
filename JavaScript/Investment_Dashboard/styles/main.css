@@ -9,7 +9,246 @@
 }
 
 body {
-  background-color: #0e0e11;
-  color: #ffffff;
+  background: #f5f7fa;
+  color: #1f2937;
   line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.header .header-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.last-update {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+.section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #1f2937;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+.error {
+  color: #ef4444;
+}
+
+.footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: #6b7280;
+  font-size: 0.9rem;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 40px;
+}
+.footer p {
+  margin: 5px 0;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+.card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+.card-header .crypto-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.card-header .crypto-info, .card-header .stock-info {
+  flex: 1;
+}
+.card-header .crypto-info h3, .card-header .stock-info h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.card-header .crypto-name, .card-header .stock-name {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.card-body {
+  margin: 15px 0;
+}
+.card-body .crypto-price, .card-body .stock-price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.card-body .crypto-change, .card-body .stock-change {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.card-body .crypto-change.positive, .card-body .stock-change.positive {
+  color: #10b981;
+}
+.card-body .crypto-change.negative, .card-body .stock-change.negative {
+  color: #ef4444;
+}
+.card-body .crypto-change .change-icon, .card-body .stock-change .change-icon {
+  font-size: 1.2rem;
+}
+
+.card-footer {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e5e7eb;
+}
+.card-footer small {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.btn-primary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #3b82f6;
+  color: white;
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-primary:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #f5f7fa;
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
+}
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-secondary:hover {
+  background: #ffffff;
+}
+
+.converter {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.converter h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.converter .converter-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.converter .converter-row input, .converter .converter-row select {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f5f7fa;
+  color: #1f2937;
+}
+.converter .converter-row input:focus, .converter .converter-row select:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+.converter .converter-arrow {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #6b7280;
+  margin: 10px 0;
+}
+.converter #convert-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .converter .converter-row {
+    flex-direction: column;
+  }
 }/*# sourceMappingURL=main.css.map */

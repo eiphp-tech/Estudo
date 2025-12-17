@@ -1,25 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-
-// Cores principais
-$bg-primary: #0e0e11;
+// Variáveis SASS
+$bg-primary: #f5f7fa;
 $bg-secondary: #ffffff;
-$text-primary: #ffffff;
-$text-secondary: #0a3042;
-$text-tercerny: #6b6b6b;
-$border-color: #dadada;
-
-// Cores de destaque
+$text-primary: #1f2937;
+$text-secondary: #6b7280;
+$border-color: #e5e7eb;
 $color-positive: #10b981;
 $color-negative: #ef4444;
 $color-accent: #3b82f6;
-
-// Sombras
 $shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
 $shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
 $shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 
-*{
+// Mixins
+@mixin card-base {
+  background: $bg-secondary;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: $shadow-sm;
+  transition: all 0.3s ease;
+  border: 1px solid $border-color;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+}
+
+@mixin btn-base {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Reset e base
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -28,9 +53,254 @@ $shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   text-decoration: none;
 }
 
-body{
-  background-color: $bg-primary;
+body {
+  background: $bg-primary;
   color: $text-primary;
   line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+// Header
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: $bg-secondary;
+  border-radius: 12px;
+  box-shadow: $shadow-md;
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  .header-controls {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+// Last Update
+.last-update {
+  text-align: center;
+  margin-bottom: 20px;
+  color: $text-secondary;
+  font-size: 0.9rem;
+}
+
+// Sections
+.section {
+  margin-bottom: 40px;
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: $text-primary;
+  }
+}
+
+// Grid Layout
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+// Loading & Error
+.loading, .error {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+  color: $text-secondary;
+}
+
+.error {
+  color: $color-negative;
+}
+
+// Footer
+.footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: $text-secondary;
+  font-size: 0.9rem;
+  border-top: 1px solid $border-color;
+  margin-top: 40px;
+
+  p {
+    margin: 5px 0;
+  }
+}
+
+// Cards
+.card {
+  @include card-base;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+
+  .crypto-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .crypto-info, .stock-info {
+    flex: 1;
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+  }
+
+  .crypto-name, .stock-name {
+    font-size: 0.85rem;
+    color: $text-secondary;
+  }
+}
+
+.card-body {
+  margin: 15px 0;
+
+  .crypto-price, .stock-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .crypto-change, .stock-change {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+
+    &.positive {
+      color: $color-positive;
+    }
+
+    &.negative {
+      color: $color-negative;
+    }
+
+    .change-icon {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.card-footer {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid $border-color;
+
+  small {
+    color: $text-secondary;
+    font-size: 0.85rem;
+  }
+}
+
+// Buttons
+.btn-primary {
+  @include btn-base;
+  background: $color-accent;
+  color: white;
+
+  &:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+  }
+}
+
+.btn-secondary {
+  @include btn-base;
+  background: $bg-primary;
+  color: $text-primary;
+  border: 1px solid $border-color;
+
+  &:hover {
+    background: $bg-secondary;
+  }
+}
+
+// Converter
+.converter {
+  background: $bg-secondary;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: $shadow-md;
+
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .converter-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+
+    input, select {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: $bg-primary;
+      color: $text-primary;
+
+      &:focus {
+        outline: none;
+        border-color: $color-accent;
+      }
+    }
+  }
+
+  .converter-arrow {
+    text-align: center;
+    font-size: 1.5rem;
+    color: $text-secondary;
+    margin: 10px 0;
+  }
+
+  #convert-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .converter .converter-row {
+    flex-direction: column;
+  }
 }
 
