@@ -29,6 +29,7 @@ async function loadCryptos() {
     return cryptos;
   } catch (error) {
     showError('crypto-container', 'Erro ao carregar cryptos')
+    throw error;
   }
 }
 
@@ -44,6 +45,7 @@ async function loadStocks() {
     return stocks;
   } catch (error) {
     showError('stock-container', 'Erro ao carregar ações')
+    throw error;
   }
 }
 
@@ -57,6 +59,7 @@ async function loadConverter(cryptos) {
 
   } catch (error) {
     showError('converter-container', 'Erro ao carregar conversor')
+    throw error;
   }
 }
 
@@ -93,7 +96,8 @@ async function init() {
     updateLastRefresh();
     console.log('✅ Dashboard carregado com sucesso!');
   } catch (error) {
-    nsole.error('❌ Erro ao inicializar dashboard:', error)
+    console.error('❌ Erro ao inicializar dashboard:', error)
+    throw error;
   }
 }
 
