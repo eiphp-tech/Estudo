@@ -95,14 +95,30 @@ body {
   font-size: 0.9rem;
 }
 
-// Sections
-.section {
+// Main Content Layout
+.main-content {
+  display: flex;
+  gap: 30px;
   margin-bottom: 40px;
 
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: $text-primary;
+  .crypto-section, .converter-section {
+    flex: 1;
+  }
+
+  .crypto-section {
+    .grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+
+  .converter-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    .converter {
+      margin-top: 40px;
+    }
   }
 }
 
@@ -293,6 +309,11 @@ body {
     h1 {
       font-size: 1.5rem;
     }
+  }
+
+  .main-content {
+    flex-direction: column;
+    gap: 20px;
   }
 
   .grid {

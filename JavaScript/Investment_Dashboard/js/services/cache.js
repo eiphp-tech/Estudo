@@ -4,10 +4,10 @@ export const createCache = (ttl = 120000) => {
 
   return {
     get(key) {
-      const timeouts = timeouts.get(key)
-      const age = Date.now() - timeouts
+      const timestamp = timeouts.get(key)
+      const age = Date.now() - timestamp
 
-      if (!timeouts) {
+      if (!timestamp) {
         return null
       }
       if (age > ttl) {

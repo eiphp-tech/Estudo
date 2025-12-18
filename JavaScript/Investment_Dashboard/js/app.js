@@ -1,8 +1,6 @@
 import { getTopCryptos, clearCryptoCache } from './services/cryptoService.js';
-import { getBrazilianStocks } from './services/stockService.js';
 import { getExchangeRates } from './services/currencyService.js';
 import { cryptoCard } from './components/cryptoCard.js';
-import { stockCard } from './components/stockCard.js';
 import { ConverterCard } from './components/converter.js';
 
 // function showError; showLoading; 
@@ -21,7 +19,7 @@ async function loadCryptos() {
   const container = document.getElementById('crypto-container');
   showLoading('crypto-container');
   try {
-    const cryptos = await getTopCryptos(5)
+    const cryptos = await getTopCryptos(4)
     container.innerHTML = '';
     cryptos.forEach(crypto => {
       cryptoCard(crypto, container);
@@ -29,21 +27,7 @@ async function loadCryptos() {
     return cryptos;
   } catch (error) {
     showError('crypto-container', 'Erro ao carregar cryptos')
-  }
-}
-
-async function loadStocks() {
-  const container = document.getElementById('stock-container');
-  showLoading('stock-container');
-  try {
-    const stocks = await getBrazilianStocks(5);
-    container.innerHTML = '';
-    stocks.forEach(stock => {
-      stockCard(stock, container);
-    })
-    return stocks;
-  } catch (error) {
-    showError('stock-container', 'Erro ao carregar ações')
+    throw error
   }
 }
 
@@ -57,6 +41,7 @@ async function loadConverter(cryptos) {
 
   } catch (error) {
     showError('converter-container', 'Erro ao carregar conversor')
+    throw error
   }
 }
 
@@ -85,15 +70,13 @@ async function init() {
   console.log('🚀 Iniciando Investment Dashboard...')
 
   try {
-    const [cryptos] = await Promise.all([
-      loadCryptos(),
-      loadStocks()
-    ]);
+    const cryptos = await loadCryptos();
     await loadConverter(cryptos);
     updateLastRefresh();
     console.log('✅ Dashboard carregado com sucesso!');
   } catch (error) {
-    nsole.error('❌ Erro ao inicializar dashboard:', error)
+    console.error('❌ Erro ao inicializar dashboard:', error)
+    throw error;
   }
 }
 

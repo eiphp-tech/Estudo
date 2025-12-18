@@ -13,12 +13,17 @@ export async function getExchangeRates() {
   }
 
   const data = await fetchWithRetry(API_URL);
-  cache.set(cacheKey, data);
-  return data;
+  cache.set(cacheKey, data.rates);
+  return data.rates;
 }
 
 
 export async function convertWithRates(amount, from, to, rates) {
+  if (!rates || !rates[from] || !rates[to]) {
+    console.warn('Taxas de câmbio não disponíveis para conversão');
+    return 0;
+  }
+
   if (from === 'USD') {
     return amount * rates[to];
   } else if (to === 'USD') {

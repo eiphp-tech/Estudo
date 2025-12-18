@@ -3,7 +3,7 @@ import { fetchWithRetry } from '../utils/http.js';
 
 const cache = createCache(120000);
 
-export async function getTopCryptos(limit = 5) {
+export async function getTopCryptos(limit = 4) {
   const cacheKey = `topCrypto_${limit}`;
   const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${limit}&sparkline=false&price_change_percentage=24h,7d`;
 
